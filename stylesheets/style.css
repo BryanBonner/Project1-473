@@ -1,0 +1,23 @@
+body
+{
+  background: #DCDCDC;
+}
+
+main .inputSection
+{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+main .postTextBox
+{
+  padding-top: 150px;
+  padding-left: 200px;
+  padding-right: 200px;
+  align-items: center;
+}
+
+footer .loginWAccount
+{
+  padding-top: 50px;
+}

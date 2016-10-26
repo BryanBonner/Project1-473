@@ -1,0 +1,26 @@
+body
+{
+ 
+}
+
+main .searchBar
+{
+  position: relative;
+  left: 1050px;
+}
+
+main .postTextBox
+{
+	
+} 
+main .firstGroupButton
+{
+	position: relative;
+	left: 800px;
+}
+
+
+footer
+{
+  padding-top: 50px;
+}
