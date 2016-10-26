@@ -5,5 +5,5 @@ To run
 
 1. Download or clone
 2. Navigate to the directory in git bash or terminal
-3. $npm init
+3. install dependencies
 4. $node server.js
