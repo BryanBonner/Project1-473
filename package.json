@@ -1,9 +1,9 @@
 {
   "name": "473project1",
   "version": "1.0.0",
-  "description": "Project 1 for CPSC 473 with Professor Avery",
-  "main": "server.js",
-  "author": "",
+  "description": "Team Unlamented Epicurean's Project 1 for CPSC 473 with Professor Avery",
+  "main": "",
+  "author": "Bryan Bonner, Julio Cruz, James Mitchell, Yui Tamaki, Jimmy Vo",
   "license": "UNLICENSED",
   "dependencies": {
     "body-parser": "^1.15.2",
