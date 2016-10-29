@@ -9,13 +9,13 @@ To Run
 4. start app with $node app.js
 
 **-- TO DO --**
- -Establish view engine
- -Register view page
-      -handle fields for email, username, password, password2 (confirm)
- -Login view page
-      -handle fields for username and password
- -Test authentication and validation (already written)
- -Add error vars in view page (validation errors already written)
- -Add logout feature
-    -Replace login view with a logout once the user is logged in
- -Post comment .. etc
+1. Establish view engine
+2. Register view page
+      2a. handle fields for email, username, password, password2 (confirm)
+3. Login view page
+      3a. handle fields for username and password
+4. Test authentication and validation (already written)
+5. Add error vars in view page (validation errors already written)
+6. Add logout feature
+    6a. Replace login view with a logout once the user is logged in
+7. Post comment .. etc
