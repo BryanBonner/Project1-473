@@ -13,9 +13,9 @@ const express = require('express'),
       LocalStrategy = require('passport-local').Strategy;
 
 // Create our routes & Schema vars
-var users = require('./routes/users'),
-    routes = require('./routes/index');
-    User = require('../models/user');
+var routes = require('./routes/index');
+    users = require('./routes/users'),
+    User = require('./models/user');
 
 // Initialize our app
 var app = express();
@@ -50,8 +50,8 @@ app.use(cookieParser());
 // Creates our session
 app.use(session({
 	secret: 'secret', //whatever we want as the super secret secret
-	saveUnitialized: true,
-	resave: true
+	resave: true,
+  saveUninitialized: true
 }));
 
 // Initialize passport - used for our authentication
