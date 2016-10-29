@@ -10,6 +10,7 @@ const express = require('express'),
       passport = require('passport'),
       flash = require('connect-flash'),
       path = require('path'),
+      exphbs = require('express-handlebars'),
       LocalStrategy = require('passport-local').Strategy;
 
 // Create our routes & Schema vars
@@ -28,11 +29,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //**Set our view engine - What do we want to use? Pug(jade), Ejs, Handlebars?**
+//** For now ill use handlebars
 //** Set our default layouts(check this later - dependent on view engine)
-// app.engine('nameOfEngine', engine({defaultLayout:'layout'}));
+app.engine('handlebars', exphbs({defaultLayout:'layout'}));
 
 //** Replace nameOfEngine with whatever engine we decide to use **
-// app.set('view engine', 'nameOfEngine');
+app.set('view engine', 'handlebars');
 
 // Connect to the database
 mongoose.connect('mongodb://473:project1@ds039674.mlab.com:39674/cpsc473');
