@@ -13,9 +13,12 @@ const express = require('express'),
       LocalStrategy = require('passport-local').Strategy;
 
 // Create our routes & Schema vars
-var users = require('/routes/users'),
-    routes = require('/routes/index');
+var users = require('./routes/users'),
+    routes = require('./routes/index');
     User = require('../models/user');
+
+// Initialize our app
+var app = express();
 
 // Set view path directory
 app.set('views', path)
@@ -28,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //** Set our default layouts(check this later - dependent on view engine)
 // app.engine('nameOfEngine', engine({defaultLayout:'layout'}));
 
-//** Replace jade with whatever engine we use **
+//** Replace nameOfEngine with whatever engine we decide to use **
 // app.set('view engine', 'nameOfEngine');
 
 // Connect to the database

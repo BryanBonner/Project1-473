@@ -1,6 +1,6 @@
 var express = require('express'),
 	  router = express.Router(),
-	  passport = equire('passport');
+	  passport = require('passport');
     LocalStrategy = require('passport-local').Strategy,
     User = require('../models/user');
 
@@ -51,7 +51,7 @@ router.post('/register', function(req, res) {
 			var newUser = new User( {
 			    email: email,
 		      username: username,
-			    password: password;
+			    password: password
 			});
 
       // Create our user - throw an error if it fails
@@ -89,7 +89,8 @@ passport.use(new LocalStrategy(
   				return done(null, false, {message: 'Invalid Password'});
   			}
   		});
-  	})); //Parenthesis and Brackets might be incorrectly placed
+  	};
+	}));
 
 // Passport serialization
 //Taken from official passport docs - getUserById found in our schema
