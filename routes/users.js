@@ -24,13 +24,13 @@ router.post('/register', function(req, res) {
 		//test if it's working -- delete this later
 		console.log(email);
 
-		// Validation example
-		req.checkBody('email', 'E-mail is required').isEmail(); //checks if email field is valid
+		// Validation
+		req.checkBody('email', 'E-mail is required').isEmail();
 		req.checkBody('username', 'Username is required').notEmpty();
-    req.checkBody('password', 'Password is required').notEmpty();
-    req.checkBody('password2', 'passwords do not match').equals(req.body.password);
+		req.checkBody('password', 'Password is required').notEmpty();
+		req.checkBody('password2', 'passwords do not match').equals(req.body.password);
 
-		//test for errors example - delete this later
+		// Test for errors example - delete the console logs later
 		var errors = req.validationErrors();
 		if(errors) {
 			console.log('Yes there are errors');
@@ -40,7 +40,7 @@ router.post('/register', function(req, res) {
 		}
 
 		// After deleting the above error check - use this as a real check
-		// Re-render the form and pass along the errors
+		// Re-render the register page with the errors
 		if(errors) {
 			res.render('register', {
 				errors:errors
@@ -62,7 +62,7 @@ router.post('/register', function(req, res) {
 
 			// For this to work we need to create a placeholder in our layouts file
 			// that checks all 3 of our global vars
-			req.flash('success_msg', 'You are registered and can login');
+			req.flash('success_msg', 'You are now registered and can login');
 			res.redirect('/users/login');
 		}
 });
