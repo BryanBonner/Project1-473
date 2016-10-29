@@ -21,9 +21,9 @@
                     </form>
                 </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
 
 
 
@@ -37,3 +37,40 @@
         </div>
     </div>
 </div>
+
+<main>
+    <div class="postPopup">
+        <div data-role="main" class="ui-content">
+            <a href="#myPopup3" data-rel="popup" data-position-to="window" class="ui-btn ui-btn-inline ui-corner-all">Post</a>
+            <div data-role="popup" id="myPopup3" data-overlay-theme="a" class="ui-content" style="min-width:750px;">
+                <form method="post" action="">
+                    <div class="ui form">
+                        <div class="fields">
+                            <div class="ten wide field">
+                                <label>Title</label>
+                                <input type="text" id="postTitle" placeholder="Title for excuse">
+                            </div>
+                            <div class="five wide field">
+                                <label>Post As</label>
+                                <input type="text" id="postMaker" placeholder="post as">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Tell us your excuse:</label>
+                            <textarea id="postExcuse"></textarea>
+                        </div>
+                        <p></p><button class="ui teal button" id="submitExcuse">Submit</button>
+                        <p></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="ui accordian">
+        <div id="excusePosts">
+        </div>
+    </div>
+    <p></p>
+</main>
