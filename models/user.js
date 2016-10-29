@@ -1,13 +1,46 @@
 var mongoose = require('mongoose'),
-    passportLocalMongoose = require('passport-local-mongoose');
+    bcrypt = require('bcryptjs');
 
 var UserSchema = new mongoose.Schema({
-  email: String,
-  username: String,
-  password: String
-});
+      email: String,
+      username: String,
+      password: String,
+      password2: String
+    });
 
-UserSchema.plugin(passportLocalMongoose);
+var User = module.exports = mongoose.model('User', UserSchema);
 
-var User = mongoose.model('User', UserSchema);
-module.exports = User;
+// Hash our password in the db
+module.exports.createUser = function(newUser, callback) {
+	//following code copied directly from bcryptjs documentation
+	bcrypt.genSalt(10, function(err, salt) {
+		bcrypt.hash(newUser.password, salt, function(err, hash) {
+			// Store hash in password DB & save it
+			newUser.password = hash;
+			newUser.save(callback);
+		});
+	});
+};
+
+// Find user by username in our db
+module.exports.getUserByUsername = function(username, callback) {
+	var query = {username: username};
+	User.findOne(query, callback);
+}
+
+// Find user by object id in our db
+module.exports.getUserById = function(username, callback) {
+	User.findById(id, callback);
+}
+
+// Find password
+module.exports.comparePassword = function(inputPassword, hash, callback) {
+	//Load hash password - taken from documentation
+	bcrypt.compare(inputPassword, hash, function(err, isMatch) {
+		if(err) throw err;
+		callback(null, isMatch);
+	});
+}
+
+// *Now our user can register, we can use db.users.find() in our mongo to display
+// the registered user as a test
