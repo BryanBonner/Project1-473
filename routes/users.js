@@ -7,12 +7,12 @@ var express = require('express'),
 // GET - Register
 router.get('/register', function(req, res) {
 	res.render('register');
-})
+});
 
 // GET - login
 router.get('/login', function(req, res) {
 	res.render('login');
-})
+});
 
 // Register User - gets data from the user end and validates it
 router.post('/register', function(req, res) {

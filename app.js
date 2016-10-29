@@ -3,7 +3,7 @@
 const express = require('express'),
       expressValidator = require('express-validator'),
       cookieParser = require('cookie-parser'),
-      bodyParser = require('body-parser')
+      bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
       mongo = require('mongodb'),
       session = require('express-session'),
@@ -14,15 +14,18 @@ const express = require('express'),
       LocalStrategy = require('passport-local').Strategy;
 
 // Create our routes & Schema vars
-var routes = require('./routes/index');
+var routes = require('./routes/index'),
     users = require('./routes/users'),
-    User = require('./models/user');
+    User = require('./models/user'),
+    excuses = require('./routes/excuses'),
+    Excuse = require('./models/excuse');
+
 
 // Initialize our app
 var app = express();
 
 // Set view path directory
-app.set('views', path)
+app.set('views', path);
 app.set('views', path.join(__dirname, 'views'));
 
 // Set public directory
@@ -63,9 +66,9 @@ app.use(passport.session());
 //Express Validator - Copied from express-validator documentation
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
+      var namespace = param.split('.'),
+      root    = namespace.shift(),
+      formParam = root;
 
     while(namespace.length) {
       formParam += '[' + namespace.shift() + ']';
@@ -94,6 +97,7 @@ app.use(function (req, res, next) {
 // Set our routes
 app.use('/', routes);
 app.use('/users', users);
+app.use('/excuses', excuses);
 
 app.listen(3000);
 console.log('Listening on port 3000');
