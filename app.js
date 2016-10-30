@@ -1,6 +1,6 @@
 // Project 1 for Unlamented Something - Share excuses for missing class
 //
-const express = require('express'),
+var express = require('express'),
       expressValidator = require('express-validator'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
@@ -29,7 +29,7 @@ app.set('views', path);
 app.set('views', path.join(__dirname, 'views'));
 
 // Set public directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
 
 //**Set our view engine - What do we want to use? Pug(jade), Ejs, Handlebars?**
 //** For now ill use handlebars

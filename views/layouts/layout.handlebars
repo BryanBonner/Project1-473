@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Excuses</title>
+</head>
+<body>
+  <!--- Header --->
+  <header>
+    <nav>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <span></span>Excuses</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            {{#if user}}
+            <li><a href="/users/logout">Logout</a></li>
+            {{else}}
+            <li><a href="/users/login">Login</a></li>
+            <li><a href="/users/register">Register</a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!--- End of header --->
+  <!--- Main --->
+  <main>
+    <div class="container-fluid">
+      {{{body}}}
+    </div>
+    <div class="container container-table">
+      <div class="row vertical-center-row">
+        <div class="text-center col-md-4 col-md-offset-4">
+          {{#if success_msg}}
+            <div class="alert alert-success" role="alert">{{success_msg}}</div>
+          {{/if}}
+          {{#if error_msg}}
+            <div class="alert alert-danger" role="alert">{{error_msg}}</div>
+          {{/if}}
+          {{#if error}}
+            <div class="alert alert-danger" role="alert">{{error}}</div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--- End of Main --->
+  <!--- Footer --->
+  <footer class="footer">
+     <div class="container-fluid">
+       <h5 class="text-center">&copy; 2016 Excuses, Inc.</h5>
+     </div>
+  </footer>
+  <!--- End of Footer --->
+</body>
+</html>
