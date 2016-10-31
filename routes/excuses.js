@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // POST - excuses
-router.post("/submitExcuse", function(req, res) {
+app.post("/submitExcuse", function(req, res) {
     var excuse = new Excuse();
     excuse.title = req.body.title;
     excuse.postMaker = req.body.postMaker;
@@ -29,7 +29,7 @@ router.post("/submitExcuse", function(req, res) {
 
 // GET - excuses
 //get the list of excuse posts from the database
-router.get("/getExcuses", function(req, res) {
+app.get("/getExcuses", function(req, res) {
     Excuse.find({}, function(err, excuses) {
         var excuseMap = {};
 
