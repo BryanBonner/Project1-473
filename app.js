@@ -29,7 +29,7 @@ app.set('views', path);
 app.set('views', path.join(__dirname, 'views'));
 
 // Set public directory
-app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //**Set our view engine - What do we want to use? Pug(jade), Ejs, Handlebars?**
 //** For now ill use handlebars
@@ -98,6 +98,7 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/excuses', excuses);
+
 
 app.listen(3000);
 console.log('Listening on port 3000');
