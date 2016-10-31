@@ -98,7 +98,7 @@ passport.deserializeUser(function(id, done) {
 
 // POST login
 // redirects to home page if accepted, otherwise to the login
-router.post('login',
+router.post('/login',
 	//failureFlash true - we are using flash messages
 	passport.authenticate('local', {
     successRedirect: '/',
