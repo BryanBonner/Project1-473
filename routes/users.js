@@ -1,7 +1,7 @@
 var express = require('express'),
-	  router = express.Router(),
-	  passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
+	router = express.Router(),
+	passport = require('passport'),
+	LocalStrategy = require('passport-local').Strategy,
     User = require('../models/user');
 
 // GET - Register
@@ -18,8 +18,8 @@ router.get('/login', function(req, res) {
 router.post('/register', function(req, res) {
 	var email = req.body.email,
 	    username = req.body.username,
-		  password = req.body.password,
-		  password2 = req.body.password2; // For confirm password field
+		password = req.body.password,
+		password2 = req.body.password2; // For confirm password field
 
 		//test if it's working -- delete this later
 		console.log(email);
@@ -30,30 +30,22 @@ router.post('/register', function(req, res) {
 		req.checkBody('password', 'Password is required').notEmpty();
 		req.checkBody('password2', 'passwords do not match').equals(req.body.password);
 
-		// Test for errors example - delete the console logs later
+		// Get the validation errors
 		var errors = req.validationErrors();
-		if(errors) {
-			console.log('Yes there are errors');
-		}
-		else {
-			console.log('there are no errors');
-		}
 
-		// After deleting the above error check - use this as a real check
 		// Re-render the register page with the errors
 		if(errors) {
 			res.render('register', {
-				errors:errors
+				errors: errors
 			});
 		} else {
-			console.log('PASSED');
-			//validation passed so lets create our new user
+			// Validation passed so lets create our new user
 			var newUser = new User( {
 			    email: email,
-		      username: username,
+		      	username: username,
 			    password: password
 			});
-
+			
       // Create our user - throw an error if it fails
 			User.createUser(newUser, function(err, user) {
 				if(err) throw err;
@@ -89,8 +81,8 @@ passport.use(new LocalStrategy(
   				return done(null, false, {message: 'Invalid Password'});
   			}
   		});
-  	};
-	}));
+	};
+  }));
 
 // Passport serialization
 //Taken from official passport docs - getUserById found in our schema
