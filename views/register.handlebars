@@ -1,13 +1,13 @@
 {{#if errors}}
   {{#each errors}}
-    <div class="alert alert-danger">{{msg}}</div>
+    <div class="ui warning message ce">{{msg}}</div>
     {{/each}}
   {{/if}}
 
 <div class="ui one column stackable center aligned page grid">
     <div class="column eight wide">
       <h2 class="ui header">Register</h2>
-        <form class="ui form">
+        <form class="ui form" method="post" action="/users/register">
             <div class="field">
                 <label>E-mail</label>
                 <input type="text" name="email" placeholder="E-mail">
