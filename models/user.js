@@ -12,7 +12,7 @@ var User = module.exports = mongoose.model('User', UserSchema);
 
 // Hash our password in the db
 module.exports.createUser = function(newUser, callback) {
-	//following code copied directly from bcryptjs documentation
+	// Following code copied directly from bcryptjs documentation
 	bcrypt.genSalt(10, function(err, salt) {
 		bcrypt.hash(newUser.password, salt, function(err, hash) {
 			// Store hash in password DB & save it
@@ -26,12 +26,12 @@ module.exports.createUser = function(newUser, callback) {
 module.exports.getUserByUsername = function(username, callback) {
 	var query = {username: username};
 	User.findOne(query, callback);
-}
+};
 
 // Find user by object id in our db
 module.exports.getUserById = function(username, callback) {
 	User.findById(id, callback);
-}
+};
 
 // Find password
 module.exports.comparePassword = function(inputPassword, hash, callback) {
@@ -40,7 +40,4 @@ module.exports.comparePassword = function(inputPassword, hash, callback) {
 		if(err) throw err;
 		callback(null, isMatch);
 	});
-}
-
-// *Now our user can register, we can use db.users.find() in our mongo to display
-// the registered user as a test
+};
