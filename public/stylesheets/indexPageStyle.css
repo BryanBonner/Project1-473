@@ -1,6 +1,11 @@
 body
 {
- 
+
+}
+
+header
+{
+  background-color: #4484CE
 }
 
 main .searchBar
@@ -11,8 +16,8 @@ main .searchBar
 
 main .postTextBox
 {
-	
-} 
+
+}
 main .firstGroupButton
 {
 	position: relative;

@@ -1,59 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Excuses</title>
+    <title>Excuses</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href="indexPageStyle.css" rel="stylesheet" type="text/css">
+    <link href="accordion.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
 </head>
+
 <body>
-  <!--- Header --->
-  <header>
-    <nav>
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <span></span>Excuses</a>
+    <!--- Header --->
+    <header>
+        <div class="center align">
+            <div class="ui primary menu">
+                <a class="item" href="/index"><i class="home icon"></i>Home</a>
+                <a class="item" href="#">Most Popular Excuses</a>
+                <a class="item" href="#">Most Embarrassing Excuses</a>
+                <a class="item" href="#">Most Hilarious Excuses</a>
+                <a class="item" href="#">Most Cringy Excuses</a>
+                <div class="right menu">
+                    <a class="ui button" href="/users/login">Login</a>
+                    <a class="ui primary button" href="/users/register">Register</a>
+                </div>
+            </div>
+    </header>
+    <!--- End of header --->
+    <!--- Main --->
+    <main>
+        <div class="container-fluid">
+            {{{body}}}
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            {{#if user}}
-            <li><a href="/users/logout">Logout</a></li>
-            {{else}}
-            <li><a href="/users/login">Login</a></li>
-            <li><a href="/users/register">Register</a></li>
-            {{/if}}
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <!--- End of header --->
-  <!--- Main --->
-  <main>
-    <div class="container-fluid">
-      {{{body}}}
-    </div>
-    <div class="container container-table">
-      <div class="row vertical-center-row">
-        <div class="text-center col-md-4 col-md-offset-4">
-          {{#if success_msg}}
-            <div class="alert alert-success" role="alert">{{success_msg}}</div>
-          {{/if}}
-          {{#if error_msg}}
-            <div class="alert alert-danger" role="alert">{{error_msg}}</div>
-          {{/if}}
-          {{#if error}}
-            <div class="alert alert-danger" role="alert">{{error}}</div>
-          {{/if}}
-        </div>
-      </div>
-    </div>
-  </main>
-  <!--- End of Main --->
-  <!--- Footer --->
-  <footer class="footer">
-     <div class="container-fluid">
-       <h5 class="text-center">&copy; 2016 Excuses, Inc.</h5>
-     </div>
-  </footer>
-  <!--- End of Footer --->
+    </main>
+    <!--- End of Main --->
 </body>
+
 </html>
