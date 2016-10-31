@@ -31,12 +31,8 @@ app.set('views', path.join(__dirname, 'views'));
 // Set public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-//**Set our view engine - What do we want to use? Pug(jade), Ejs, Handlebars?**
-//** For now ill use handlebars
-//** Set our default layouts(check this later - dependent on view engine)
+//Set our view engine as handlebars
 app.engine('handlebars', exphbs({defaultLayout:'layout'}));
-
-//** Replace nameOfEngine with whatever engine we decide to use **
 app.set('view engine', 'handlebars');
 
 // Connect to the database
@@ -56,7 +52,7 @@ app.use(cookieParser());
 app.use(session({
 	secret: 'secret', //whatever we want as the super secret secret
 	resave: true,
-  saveUninitialized: true
+  	saveUninitialized: true
 }));
 
 // Initialize passport - used for our authentication
@@ -67,7 +63,7 @@ app.use(passport.session());
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
       var namespace = param.split('.'),
-      root    = namespace.shift(),
+      root = namespace.shift(),
       formParam = root;
 
     while(namespace.length) {
@@ -87,7 +83,7 @@ app.use(flash());
 // Global vars for flash messages
 app.use(function (req, res, next) {
   // We'll use this to display success and error messages when we render pages
-  res.locals.success_msg = req.flash('success_msg');
+  	res.locals.success_msg = req.flash('success_msg');
 	res.locals.error_msg = req.flash('error_msg');
   //passport sets its own error msg that's why this one is necessary
 	res.locals.error = req.flash('error');
@@ -98,7 +94,6 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/excuses', excuses);
-
 
 app.listen(3000);
 console.log('Listening on port 3000');
