@@ -41,7 +41,7 @@ var main = function () {
       }
     });
   };
-  
+
   $('#submitExcuse').click(function() {
     postMaker = $('#postMaker').val();
     title = $('#postTitle').val();
@@ -57,7 +57,7 @@ var main = function () {
         $('#postExcuse').text('');
         displayExcuses('');
       }
-    )
+    );
   });
 
   document.body.addEventListener('click', function(evt) {
@@ -96,7 +96,7 @@ var main = function () {
         function(data) {
           d.className += " active";
         }
-      )
+      );
     }
   };
   var showExcuse = function(excuseKey) {
@@ -108,18 +108,18 @@ var main = function () {
         document.getElementById('c' + key).innerHTML = '';
       }
     }
-    
+
     excuse = excuseData[excuseKey];
     excuseDisplay = '<p>' + excuse.excuse + '</p>' +
                     '<button class="ui button excuseStatusPick" id="L' + excuseKey + '"><i class="thumbs outline up icon"></i>Like</button>' +
                     '<button class="ui button excuseStatusPick" id="G' + excuseKey + '"><i class="legal icon"></i>Legit</button>' +
                     '<button class="ui button excuseStatusPick" id="E' + excuseKey + '"><i class="bomb icon"></i>Embarrassing</button>' +
                     '<button class="ui button excuseStatusPick" id="H' + excuseKey + '"><i class="smile icon"></i>Hilarious</button>' +
-                    '<button class="ui button excuseStatusPick" id="W' + excuseKey + '"><i class="thumbs outline down icon"></i>Cringe-Worthy</button>'
+                    '<button class="ui button excuseStatusPick" id="W' + excuseKey + '"><i class="thumbs outline down icon"></i>Cringe-Worthy</button>';
 
     document.getElementById('c' + excuseKey).innerHTML = excuseDisplay;
 
   };
   displayExcuses('');
-}
+};
 $(document).ready(main);

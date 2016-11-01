@@ -72,7 +72,7 @@
     action["voteCount"] = 1;
 
     db.collection('excuses').findAndModify(
-      {"_id": ObjectId(req.body._id)}, {}, {$inc: action}, {}, 
+      {"_id": ObjectId(req.body._id)}, {}, {$inc: action}, {},
       function(err, db) {
         if (err) {
           console.log(err);
