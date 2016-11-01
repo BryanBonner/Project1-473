@@ -47,6 +47,7 @@
     });
   });
 
+  // Rating System for Posts
   router.post('/increaseExcuseRating', function(req, res) {
     var updateField = "";
     var action = {};

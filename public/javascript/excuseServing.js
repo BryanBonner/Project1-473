@@ -32,7 +32,6 @@ var main = function () {
                              '</div>' +
                              '<div class="content" id="c' + key + '">' +
                              '</div>';
-//    '    <p>' + excuses.excuse + '</p>' +
 
           }
         }
@@ -109,6 +108,7 @@ var main = function () {
       }
     }
 
+    // Displaying Excuses
     excuse = excuseData[excuseKey];
     excuseDisplay = '<p>' + excuse.excuse + '</p>' +
                     '<button class="ui button excuseStatusPick" id="L' + excuseKey + '"><i class="thumbs outline up icon"></i>Like</button>' +
