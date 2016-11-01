@@ -18,45 +18,44 @@ router.get('/login', function(req, res) {
 router.post('/register', function(req, res) {
 	var email = req.body.email,
 	    username = req.body.username,
-		password = req.body.password,
-		password2 = req.body.password2; // For confirm password field
+	    password = req.body.password,
+	    password2 = req.body.password2; // For confirm password field
 
-		//test if it's working -- delete this later
-		console.log(email);
+	//test if it's working -- delete this later
+	console.log(email);
 
-		// Validation
-		req.checkBody('email', 'E-mail is required').isEmail();
-		req.checkBody('username', 'Username is required').notEmpty();
-		req.checkBody('password', 'Password is required').notEmpty();
-		req.checkBody('password2', 'passwords do not match').equals(req.body.password);
+	// Validation
+	req.checkBody('email', 'E-mail is required').isEmail();
+	req.checkBody('username', 'Username is required').notEmpty();
+	req.checkBody('password', 'Password is required').notEmpty();
+	req.checkBody('password2', 'passwords do not match').equals(req.body.password);
 
-		// Get the validation errors
-		var errors = req.validationErrors();
+	// Get the validation errors
+	var errors = req.validationErrors();
 
-		// Re-render the register page with the errors
-		if(errors) {
-			res.render('register', {
-				errors: errors
-			});
-		} else {
-			// Validation passed so lets create our new user
-			var newUser = new User( {
-			    email: email,
+	// Re-render the register page with the errors
+	if(errors) {
+		res.render('register', {
+			errors: errors
+		});
+	} else {
+		// Validation passed so lets create our new user
+		var newUser = new User({
+			email: email,
 		      	username: username,
-			    password: password
-			});
+			password: password
+		});
 			
-      // Create our user - throw an error if it fails
-			User.createUser(newUser, function(err, user) {
-				if(err) throw err;
-					console.log(user);
-			});
-
-			// For this to work we need to create a placeholder in our layouts file
-			// that checks all 3 of our global vars
-			req.flash('success_msg', 'You are now registered and can login');
-			res.redirect('/users/login');
-		}
+      	// Create our user - throw an error if it fails
+	User.createUser(newUser, function(err, user) {
+		if(err) throw err;
+		console.log(user);
+	});
+	// For this to work we need to create a placeholder in our layouts file
+	// that checks all 3 of our global vars
+	req.flash('success_msg', 'You are now registered and can login');
+	res.redirect('/users/login');
+	}
 });
 
 // Gets user name, checks for match in our db, validates the password
@@ -70,10 +69,9 @@ passport.use(new LocalStrategy(
   		if(!user) {
   			return done(null, false, {message: 'No User Found'});
   		}
-
-      // Does password match?
-  		User.comparePassword(password, user.password, function(err, isMatch) {
-  			if(err) throw err;
+		// Does password match?
+		User.comparePassword(password, user.password, function(err, isMatch) {
+ 			if(err) throw err;
   			if(isMatch) {
   				return done(null, user);
   			}
@@ -101,11 +99,11 @@ passport.deserializeUser(function(id, done) {
 router.post('/login',
 	//failureFlash true - we are using flash messages
 	passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/users/login',
-    failureFlash: true}),
-	function(req, res) {
-		res.redirect('/');
+		successRedirect: '/',
+    		failureRedirect: '/users/login',
+    		failureFlash: true}),
+		function(req, res) {
+			res.redirect('/');
 	});
 
 // Log the user out
